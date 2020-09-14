@@ -50,6 +50,10 @@ public class User {
         this.name = name;
     }
 
+    public void update() {
+
+    }
+
     @Override
     public String toString() {
         return "User{" +
