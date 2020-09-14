@@ -1,4 +1,5 @@
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.Scanner;
 
 public class UserRepository {
@@ -29,21 +30,16 @@ public class UserRepository {
                     break;
                 case 2:
                     signUp();
-                    setNum(2);
                     break;
                 case 3:
                     update();
-                    setNum(3);
                     break;
                 case 4:
                     delete();
-                    setNum(4);
                 case 5:
                     showAll();
-                    setNum(5);
                     break;
                 case 6:
-                    setNum(6);
                     break;
             }
         }
@@ -58,14 +54,16 @@ public class UserRepository {
 
         String[] data = userInput.split(" ");
 
-        // get 방식보단 객체에 메시지를 보낸다
-        for (User user: memberList) {
-            if (user.matchId(data[0]) && user.matchPassword(data[1])) {
-                System.out.println("로그인 성공");
-            } else {
-                System.out.println("아이디 혹은 비밀번호가 맞지않습니다.");
-            }
-            break;
+        // 회원정보 찾은 후 로그인
+        User user = findId(data[0]);
+        if (user == null) {
+            System.out.println("아이디가 없습니다.");
+        }
+
+        if (user.matchPassword(data[1])) {
+            System.out.println("로그인 성공");
+        } else {
+            System.out.println("비밀번호 오류입니다.");
         }
     }
 
@@ -108,6 +106,15 @@ public class UserRepository {
                 memberList.remove(user);
             }
         }
+    }
+
+    private User findId(String id) {
+        for (User user: memberList) {
+            if (user.matchId(id)) {
+                return user;
+            }
+        }
+        return null;
     }
 
     private void setNum(int num) {

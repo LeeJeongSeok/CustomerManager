@@ -11,9 +11,6 @@ public class User {
         this.name = name;
     }
 
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public boolean matchId(String newId) {
         if (newId == null) {
@@ -28,26 +25,6 @@ public class User {
         }
 
         return newPassword.equals(password);
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public int getAge() {
-        return age;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
     }
 
     public void update() {
