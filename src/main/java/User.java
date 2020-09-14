@@ -11,16 +11,23 @@ public class User {
         this.name = name;
     }
 
-    public String getId() {
-        return id;
-    }
-
     public void setId(String id) {
         this.id = id;
     }
 
-    public String getPassword() {
-        return password;
+    public boolean matchId(String newId) {
+        if (newId == null) {
+            return false;
+        }
+        return newId.equals(id);
+    }
+
+    public boolean matchPassword(String newPassword) {
+        if (newPassword == null) {
+            return false;
+        }
+
+        return newPassword.equals(password);
     }
 
     public void setPassword(String password) {
