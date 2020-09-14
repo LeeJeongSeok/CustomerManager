@@ -86,13 +86,17 @@ public class UserRepository {
     }
 
     private void update() {
-        System.out.println("업데이트할 아이디의 정보(비밀번호, 나이, 이름) 입력해주세요 Ex) 1234 22 name2");
+        System.out.println("업데이트할 아이디의 정보(비밀번호, 나이, 이름) 입력해주세요 Ex) test 1234 22 name2");
 
         scanner.nextLine();
         String updateUserData = scanner.nextLine();;
 
         String[] data = updateUserData.split(" ");
 
+        User user = findId(data[0]);
+        if (user != null) {
+            user.update(data[1], Integer.parseInt(data[2]), data[3]);
+        }
     }
 
     private void delete() {

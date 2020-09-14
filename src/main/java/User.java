@@ -27,8 +27,10 @@ public class User {
         return newPassword.equals(password);
     }
 
-    public void update() {
-
+    public void update(String password, int age, String name) {
+        this.password = password;
+        this.age = age;
+        this.name = name;
     }
 
     @Override
