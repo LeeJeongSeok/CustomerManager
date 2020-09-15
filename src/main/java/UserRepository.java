@@ -54,10 +54,7 @@ public class UserRepository {
         // 사용자로부터 입력받은 아이디, 비밀번호 가져오기
         System.out.println("아이디와 패스워드를 입력해주세요 Ex) test 1234");
 
-        scanner.nextLine();
-        String userInput = scanner.nextLine();
-
-        String[] data = userInput.split(" ");
+        String[] data = getStrings();
 
         // 회원정보 찾은 후 로그인
         User user = findId(data[0]);
@@ -72,13 +69,17 @@ public class UserRepository {
         }
     }
 
+    private String[] getStrings() {
+        scanner.nextLine();
+        String userInput = scanner.nextLine();
+
+        return userInput.split(" ");
+    }
+
     private void signUp() {
         System.out.println("회원가입을 위한 정보를 입력해주세요 Ex) test 1234 20 name");
 
-        scanner.nextLine();
-        String newUserData = scanner.nextLine();
-
-        String[] data = newUserData.split(" ");
+        String[] data = getStrings();
 
         memberList.add(new User(data[0], data[1], Integer.parseInt(data[2]), data[3]));
 
@@ -93,10 +94,7 @@ public class UserRepository {
     private void update() {
         System.out.println("업데이트할 아이디의 정보(비밀번호, 나이, 이름) 입력해주세요 Ex) test 1234 22 name2");
 
-        scanner.nextLine();
-        String updateUserData = scanner.nextLine();;
-
-        String[] data = updateUserData.split(" ");
+        String[] data = getStrings();
 
         User user = findId(data[0]);
         if (user != null) {
