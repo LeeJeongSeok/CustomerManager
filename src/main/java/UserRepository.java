@@ -7,7 +7,7 @@ public class UserRepository {
     Scanner scanner = new Scanner(System.in);
     ArrayList<User> memberList = new ArrayList<User>();
 
-    int num = 0;
+    int menuMode = 0;
 
     public UserRepository() {
         memberList.add(new User("superman", "1234", 20, "SuperMan"));
@@ -19,27 +19,32 @@ public class UserRepository {
 
         System.out.println("학습용 회원정보 관리 프로그램");
 
-        while (getNum() != 6) {
+        while (menuMode != 6) {
 
             System.out.println("[1]로그인 [2]회원가입 [3]개인정보 수정 [4]회원탈퇴 [5]전체 회원 보기 [6]종료");
 
             switch (scanner.nextInt()) {
                 case 1:
+                    menuMode = 1;
                     login();
-                    setNum(1);
                     break;
                 case 2:
+                    menuMode = 2;
                     signUp();
                     break;
                 case 3:
+                    menuMode = 3;
                     update();
                     break;
                 case 4:
+                    menuMode = 4;
                     delete();
                 case 5:
+                    menuMode = 5;
                     showAll();
                     break;
                 case 6:
+                    menuMode = 6;
                     break;
             }
         }
@@ -120,13 +125,4 @@ public class UserRepository {
         }
         return null;
     }
-
-    private void setNum(int num) {
-        this.num = num;
-    }
-
-    private int getNum() {
-        return num;
-    }
-
 }
